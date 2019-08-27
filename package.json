@@ -1,0 +1,32 @@
+{
+  "name": "testtetrisgame",
+  "version": "1.0.0",
+  "description": "��#\u0000 \u0000t\u0000e\u0000s\u0000t\u0000T\u0000e\u0000t\u0000r\u0000i\u0000s\u0000G\u0000a\u0000m\u0000e\u0000\r\u0000 \u0000",
+  "main": "index.js",
+  "dependencies": {
+    "grunt": "^1.0.4",
+    "pixi.js": "^5.1.2"
+  },
+  "devDependencies": {
+    "grunt-contrib-concat": "^1.0.1",
+    "grunt-contrib-jshint": "latest",
+    "jshint-stylish": "latest",
+    "grunt-contrib-uglify": "latest",
+    "grunt-contrib-less": "latest",
+    "grunt-contrib-cssmin": "latest",
+    "grunt-contrib-watch": "latest"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/barkuns/testTetrisGame.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/barkuns/testTetrisGame/issues"
+  },
+  "homepage": "https://github.com/barkuns/testTetrisGame#readme"
+}
