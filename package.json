@@ -1,32 +1,18 @@
 {
-  "name": "testtetrisgame",
+  "name": "sergeyGame",
   "version": "1.0.0",
-  "description": "��#\u0000 \u0000t\u0000e\u0000s\u0000t\u0000T\u0000e\u0000t\u0000r\u0000i\u0000s\u0000G\u0000a\u0000m\u0000e\u0000\r\u0000 \u0000",
+  "description": "sergeyGame",
   "main": "index.js",
-  "dependencies": {
-    "grunt": "^1.0.4",
-    "pixi.js": "^5.1.2"
-  },
-  "devDependencies": {
-    "grunt-contrib-concat": "^1.0.1",
-    "grunt-contrib-jshint": "latest",
-    "jshint-stylish": "latest",
-    "grunt-contrib-uglify": "latest",
-    "grunt-contrib-less": "latest",
-    "grunt-contrib-cssmin": "latest",
-    "grunt-contrib-watch": "latest"
-  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/barkuns/testTetrisGame.git"
-  },
-  "author": "",
+  "author": "Sergey Petruhin",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/barkuns/testTetrisGame/issues"
+  "dependencies": {
+    "express": "^4.17.1",
+    "node": "^12.10.0",
+    "path": "^0.12.7"
   },
-  "homepage": "https://github.com/barkuns/testTetrisGame#readme"
+  "devDependencies": {}
 }
