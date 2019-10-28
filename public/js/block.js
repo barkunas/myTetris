@@ -1,5 +1,6 @@
 class Block{
     constructor(x,y,color){
+        this.activeBlock = true
         this.x = x
         this.y = y
         this.isEmpty = true

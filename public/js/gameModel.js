@@ -49,6 +49,7 @@ class GameModel {
             var elemY = blocksObj[elem].y
             this.gameField[elemY][elemX] = blocksObj[elem]
         }
+        //console.clear()
         console.table(this.gameField)
     }
     setZerro() {
@@ -66,6 +67,7 @@ class GameModel {
             var elemY = blocksObj[elem].y
             this.gameField[elemY][elemX] = { "isEmpty": false, "isIndependent": true, "color": blocksObj[elem].color }
         }
+        this.addItem()
     }
     checkLeft() {
         var blocksObj = this.currItem.model
@@ -94,9 +96,9 @@ class GameModel {
         for (let elem in blocksObj) {
             var elemX = blocksObj[elem].x
             var elemY = blocksObj[elem].y
-            if (elemY == this.size[1]-1) return false;
+            if (elemY == this.size[1]-1){this.crashItem() ;return false};
             var downFriend = this.gameField[elemY+1][elemX];
-            if (downFriend.isEmpty == false) return false
+            if (downFriend.isEmpty == false) {this.crashItem();return false}
         }
         return true
     }
