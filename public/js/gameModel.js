@@ -101,7 +101,36 @@ class GameModel {
         return true
     }
     checkRotate(){
+        var result = true
         var nextConfigModel = transpose(this.currItem.currentModel);
-        
+        nextConfigModel.forEach((elem, ind) => {
+            let positionY = this.currItem.y+ind
+            elem.forEach((e, i) => {
+                if (e) {
+                    let positionX = this.currItem.x+i
+                    var tempElem = this.gameField[positionY][positionX]
+                    //console.log([positionX,positionY])
+                    if(tempElem&&tempElem.isEmpty == true){
+                        return true
+                    }
+                    result = false
+                }
+            })
+        })
+        return result
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
