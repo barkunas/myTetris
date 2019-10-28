@@ -3,15 +3,19 @@ class Controller {
         document.addEventListener('keyup', (event) => {
             switch (event.code) {
                 case 'ArrowLeft':
+                    if (game.checkLeft()) game.moveItemLeft()
                     console.log('toLeft');
                     break;
                 case 'ArrowRight':
+                    if (game.checkRight()) game.moveItemRight()
                     console.log('toRight');
                     break;
-                case 'Space':
+                case 'ArrowDown':
+                    if (game.checkDown()) game.moveItemDown()
                     console.log('rotate');
                     break;
-                case 'ArrowDown':
+                case 'Space':
+                    if (game.checkRotate()) game.moveItemRotate()
                     console.log('Down');
                     break;
             }

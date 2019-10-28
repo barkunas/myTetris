@@ -108,11 +108,11 @@ class GameModel {
             elem.forEach((e, i) => {
                 if (e) {
                     let positionX = this.currItem.x+i
-                    var tempElem = this.gameField[positionY][positionX]
+                    try{var tempElem = this.gameField[positionY][positionX]
                     //console.log([positionX,positionY])
                     if(tempElem&&tempElem.isEmpty == true){
                         return true
-                    }
+                    }}catch{result = false}
                     result = false
                 }
             })
