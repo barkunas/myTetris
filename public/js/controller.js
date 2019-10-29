@@ -11,7 +11,7 @@ class Controller {
                     console.log('toRight');
                     break;
                 case 'ArrowDown':
-                    if (game.checkDown()) game.moveItemDown()
+                    if (game.checkDown()){ game.moveItemDown()}else{game.checkFullLine()}
                     console.log('rotate');
                     break;
                 case 'Space':
@@ -20,5 +20,8 @@ class Controller {
                     break;
             }
         });
+        setInterval(()=>{
+            if (game.checkDown()){ game.moveItemDown()}else{game.checkFullLine()}
+        },1000)
     }
 }

@@ -65,9 +65,31 @@ class GameModel {
         for (let elem in blocksObj) {
             var elemX = blocksObj[elem].x
             var elemY = blocksObj[elem].y
-            this.gameField[elemY][elemX] = { "activeBlock":true,"isEmpty": false, "isIndependent": true, "color": blocksObj[elem].color }
+            this.gameField[elemY][elemX] = { "activeBlock": true, "isEmpty": false, "isIndependent": true, "color": blocksObj[elem].color }
         }
         this.addItem()
+    }
+    checkFullLine() {
+        var winLineArr = []
+        this.gameField.forEach((elem, ind) => {
+            if (elem.every((e, i) => { return e.isIndependent })) { this.removeLine(ind); winLineArr.push(ind) }
+        })
+        console.log(winLineArr)
+    }
+    removeLine(num) {
+        this.gameField[num].forEach((elem, ind) => { this.gameField[num][ind] = { "isEmpty": true } })
+        this.dropDownAfterRemoved(num)
+    }
+    dropDownAfterRemoved(num) {
+        var gameHight = num
+        for (let i = num; i > 0; i--) {
+            this.gameField[i].forEach((elem,ind)=>{if(elem.isIndependent){swap(this.gameField,i,ind,i+1,ind)}})            
+        }
+        function swap(Arr, a, b, c, d) {
+            var temp = Arr[a][b]
+            Arr[a][b] = Arr[c][d]
+            Arr[c][d] = temp
+        }
     }
     checkLeft() {
         var blocksObj = this.currItem.model
@@ -75,7 +97,7 @@ class GameModel {
             var elemX = blocksObj[elem].x
             var elemY = blocksObj[elem].y
             if (elemX == 0) return false;
-            var leftFriend = this.gameField[elemY][elemX-1];
+            var leftFriend = this.gameField[elemY][elemX - 1];
             if (leftFriend.isEmpty == false) return false
         }
         return true
@@ -85,36 +107,38 @@ class GameModel {
         for (let elem in blocksObj) {
             var elemX = blocksObj[elem].x
             var elemY = blocksObj[elem].y
-            if (elemX == this.size[0]-1) return false;
-            var rightFriend = this.gameField[elemY][elemX+1];
+            if (elemX == this.size[0] - 1) return false;
+            var rightFriend = this.gameField[elemY][elemX + 1];
             if (rightFriend.isEmpty == false) return false
         }
         return true
     }
-    checkDown(){
+    checkDown() {
         var blocksObj = this.currItem.model
         for (let elem in blocksObj) {
             var elemX = blocksObj[elem].x
             var elemY = blocksObj[elem].y
-            if (elemY == this.size[1]-1){this.crashItem() ;return false};
-            var downFriend = this.gameField[elemY+1][elemX];
-            if (downFriend.isEmpty == false) {this.crashItem();return false}
+            if (elemY == this.size[1] - 1) { this.crashItem(); return false };
+            var downFriend = this.gameField[elemY + 1][elemX];
+            if (downFriend.isEmpty == false) { this.crashItem(); return false }
         }
         return true
     }
-    checkRotate(){
+    checkRotate() {
         var result = true
         var nextConfigModel = transpose(this.currItem.currentModel);
         nextConfigModel.forEach((elem, ind) => {
-            let positionY = this.currItem.y+ind
+            let positionY = this.currItem.y + ind
             elem.forEach((e, i) => {
                 if (e) {
-                    let positionX = this.currItem.x+i
-                    try{var tempElem = this.gameField[positionY][positionX]
-                    //console.log([positionX,positionY])
-                    if(tempElem&&tempElem.isEmpty == true){
-                        return true
-                    }}catch{result = false}
+                    let positionX = this.currItem.x + i
+                    try {
+                        var tempElem = this.gameField[positionY][positionX]
+                        //console.log([positionX,positionY])
+                        if (tempElem && tempElem.isEmpty == true) {
+                            return true
+                        }
+                    } catch{ result = false }
                     result = false
                 }
             })
@@ -122,17 +146,3 @@ class GameModel {
         return result
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
