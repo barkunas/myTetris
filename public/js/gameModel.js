@@ -49,7 +49,7 @@ class GameModel {
             var elemY = blocksObj[elem].y
             this.gameField[elemY][elemX] = blocksObj[elem]
         }
-        //console.clear()
+        console.clear()
         console.table(this.gameField)
     }
     setZerro() {
@@ -65,7 +65,7 @@ class GameModel {
         for (let elem in blocksObj) {
             var elemX = blocksObj[elem].x
             var elemY = blocksObj[elem].y
-            this.gameField[elemY][elemX] = { "isEmpty": false, "isIndependent": true, "color": blocksObj[elem].color }
+            this.gameField[elemY][elemX] = { "activeBlock":true,"isEmpty": false, "isIndependent": true, "color": blocksObj[elem].color }
         }
         this.addItem()
     }
