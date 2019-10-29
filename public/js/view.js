@@ -13,22 +13,21 @@ class View {
             var line = this.field[i]
             this.viewModel.push([])
             for (let k = 0; k < line.length; k++) {
-                    this.viewModel[p].push(new PIXI.Sprite(testSprite))
-                    this.viewModel[p][k].x = k * BLOCKSIZE
-                    this.viewModel[p][k].y = p * BLOCKSIZE
-                    this.viewModel[p][k].visible = false
-                    this.app.stage.addChild(this.viewModel[p][k])
+                this.viewModel[p].push(new PIXI.Sprite(testSprite))
+                this.viewModel[p][k].x = k * BLOCKSIZE
+                this.viewModel[p][k].y = p * BLOCKSIZE
+                this.viewModel[p][k].visible = false
+                this.app.stage.addChild(this.viewModel[p][k])
             }
         }
-        this.app.ticker.add(()=>this.draw())
+        this.app.ticker.add(() => this.draw())
     }
     draw() {
         for (let i = 3, p = 0; i < this.field.length; i++ , p++) {
             var line = this.field[i]
             for (let k = 0; k < line.length; k++) {
-                if(this.field[p][k].activeBlock){
-                    this.viewModel[p][k].visible = true
-                } else {this.viewModel[p][k].visible = false}              
+                this.field[i][k].activeBlock?
+                this.viewModel[p][k].visible = true: this.viewModel[p][k].visible = false
             }
         }
     }
