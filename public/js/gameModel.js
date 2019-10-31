@@ -46,8 +46,8 @@ class GameModel {
             var elemY = blocksObj[elem].y
             this.gameField[elemY][elemX] = blocksObj[elem]
         }
-        console.clear()
-        console.table(this.gameField)
+        //console.clear()
+        //console.table(this.gameField)
     }
     setZerro() {
         var blocksObj = this.currItem.model;
@@ -71,7 +71,7 @@ class GameModel {
         this.gameField.forEach((elem, ind) => {
             if (elem.every((e, i) => { return e.isIndependent })) { this.removeLine(ind); winLineArr.push(ind) }
         })
-        console.log(winLineArr)
+        //console.log(winLineArr)
     }
     removeLine(num) {
         this.gameField[num].forEach((elem, ind) => { this.gameField[num][ind] = { "isEmpty": true } })
@@ -87,6 +87,13 @@ class GameModel {
             Arr[a][b] = Arr[c][d]
             Arr[c][d] = temp
         }
+    }
+    checkLose(){
+        var result = false
+        this.gameField[2].forEach((elem,ind)=>{
+            if (elem.isIndependent){result = true}
+        })
+        return result
     }
     checkLeft() {
         var blocksObj = this.currItem.model

@@ -7,7 +7,7 @@ class View {
         this.app = new PIXI.Application({
             width: APPWIDTH, height: APPHEIGHT, backgroundColor: 0x1099bb, resolution: window.devicePixelRatio || 1,
         });
-        document.body.appendChild(this.app.view);
+        gameArea.appendChild(this.app.view);
         for (let i = 3, p = 0; i < this.field.length; i++ , p++) {
             var line = this.field[i]
             this.viewModel.push([])

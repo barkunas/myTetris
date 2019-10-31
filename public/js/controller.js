@@ -16,19 +16,20 @@ class Controller {
                 break;
             case 'ArrowDown':
                 if (game.checkDown()) { game.moveItemDown() } else { game.checkFullLine() }
-                console.log('rotate');
-                break;
-            case 'Space':
-                if (game.checkRotate()) game.moveItemRotate()
                 console.log('Down');
+                break;
+            case 'ArrowUp':
+                if (game.checkRotate()) game.moveItemRotate()
+                console.log('rotate');
                 break;
         }
     }
     initGameLoop(){
         this.setGameEvents()
         this.gameLoop = setInterval(() => {
+            this.checkAndStopGame()
             if (game.checkDown()) { game.moveItemDown() } else { game.checkFullLine() }
-        }, 1000)
+        }, 100)
     }
     stopGameLoop(){
         this.delGameEvents()
@@ -39,5 +40,11 @@ class Controller {
     }
     delGameEvents(){
         document.removeEventListener('keyup', this.gameEvents);
+    }
+    checkAndStopGame(){
+        if(game.checkLose()){
+            console.log("you lose")
+           this.stopGameLoop()
+        }
     }
 }
