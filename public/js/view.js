@@ -32,7 +32,9 @@ class View {
 }
 const testSprite = PIXI.Texture.from('img/testSprite.png')
 function createBlock() {
-    var block = new PIXI.Sprite(testSprite)
+    var sprite = new PIXI.Sprite(testSprite)
+    var block = new PIXI.Container()
+    block.addChild(sprite)
     block.visible = false
     return block
 }

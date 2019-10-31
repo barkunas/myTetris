@@ -1,7 +1,4 @@
-var type1 = {
-    "configuration": [[1, 1, 0], [0, 1, 1]],
-    "color": 1
-}
+
 class GameModel {
     constructor(sizeX, sizeY) {
         this.board = new Board(sizeX, sizeY + 3);
@@ -19,7 +16,7 @@ class GameModel {
 
     }
     addItem(type) {
-        this.currItem = new Item(0, 0, type1);//temp1 для теста- потом удалить
+        this.currItem = new Item(0, 0, new Type().type);//temp1 для теста- потом удалить
         this.updateModel()
     };
     moveItemRight() {
@@ -83,7 +80,7 @@ class GameModel {
     dropDownAfterRemoved(num) {
         var gameHight = num
         for (let i = num; i > 0; i--) {
-            this.gameField[i].forEach((elem,ind)=>{if(elem.isIndependent){swap(this.gameField,i,ind,i+1,ind)}})            
+            this.gameField[i].forEach((elem, ind) => { if (elem.isIndependent) { swap(this.gameField, i, ind, i + 1, ind) } })
         }
         function swap(Arr, a, b, c, d) {
             var temp = Arr[a][b]
@@ -126,7 +123,7 @@ class GameModel {
     }
     checkRotate() {
         var result = true
-        var nextConfigModel = transpose(this.currItem.currentModel);
+        var nextConfigModel = transpose(this.currItem.getNextConfig());
         nextConfigModel.forEach((elem, ind) => {
             let positionY = this.currItem.y + ind
             elem.forEach((e, i) => {
